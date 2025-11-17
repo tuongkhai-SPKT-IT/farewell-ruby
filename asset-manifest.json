@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/farewell-ruby/static/css/main.d7396c12.css",
+    "main.js": "/farewell-ruby/static/js/main.47b47044.js",
+    "static/js/453.0ffb4f7b.chunk.js": "/farewell-ruby/static/js/453.0ffb4f7b.chunk.js",
+    "index.html": "/farewell-ruby/index.html",
+    "main.d7396c12.css.map": "/farewell-ruby/static/css/main.d7396c12.css.map",
+    "main.47b47044.js.map": "/farewell-ruby/static/js/main.47b47044.js.map",
+    "453.0ffb4f7b.chunk.js.map": "/farewell-ruby/static/js/453.0ffb4f7b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7396c12.css",
+    "static/js/main.47b47044.js"
+  ]
+}
