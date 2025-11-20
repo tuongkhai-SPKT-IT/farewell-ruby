@@ -2,7 +2,7 @@
   "name": "honey",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ruby-farewell-galaxypay.publicvm.com",
+  "homepage": "https://tuongkhai-spkt-it.github.io/farewell-ruby",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
