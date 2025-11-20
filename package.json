@@ -2,7 +2,7 @@
   "name": "honey",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tuongkhai-spkt-it.github.io/farewell-ruby",
+  "homepage": "https://tuongkhai-spkt-it.github.io/farewell-ruby/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
