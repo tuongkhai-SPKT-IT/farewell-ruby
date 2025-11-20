@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/farewell-ruby/static/css/main.d7396c12.css",
-    "main.js": "/farewell-ruby/static/js/main.47b47044.js",
+    "main.css": "/farewell-ruby/static/css/main.1ba198df.css",
+    "main.js": "/farewell-ruby/static/js/main.66d51db8.js",
+    "static/js/885.e2af2c22.chunk.js": "/farewell-ruby/static/js/885.e2af2c22.chunk.js",
     "static/js/453.0ffb4f7b.chunk.js": "/farewell-ruby/static/js/453.0ffb4f7b.chunk.js",
+    "static/media/APT.mp3": "/farewell-ruby/static/media/APT.6c0839b012ca85fe1ff4.mp3",
     "index.html": "/farewell-ruby/index.html",
-    "main.d7396c12.css.map": "/farewell-ruby/static/css/main.d7396c12.css.map",
-    "main.47b47044.js.map": "/farewell-ruby/static/js/main.47b47044.js.map",
+    "main.1ba198df.css.map": "/farewell-ruby/static/css/main.1ba198df.css.map",
+    "main.66d51db8.js.map": "/farewell-ruby/static/js/main.66d51db8.js.map",
+    "885.e2af2c22.chunk.js.map": "/farewell-ruby/static/js/885.e2af2c22.chunk.js.map",
     "453.0ffb4f7b.chunk.js.map": "/farewell-ruby/static/js/453.0ffb4f7b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7396c12.css",
-    "static/js/main.47b47044.js"
+    "static/css/main.1ba198df.css",
+    "static/js/main.66d51db8.js"
   ]
 }
