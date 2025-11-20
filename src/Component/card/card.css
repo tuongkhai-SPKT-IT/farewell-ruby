@@ -1,0 +1,640 @@
+/*
+        ========================================
+        CẤU HÌNH CHUNG & HIỆU ỨNG 3D
+        ========================================
+        */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    /* Ngăn cuộn trang khi có hiệu ứng */
+}
+
+.card-container {
+    /* Thiết lập góc nhìn 3D (perspective) cho hiệu ứng trồi lên */
+    perspective: 1500px;
+    /* position: relative; */
+    top: 55%;
+    z-index: 10000;
+    left: 50%;
+}
+
+/*
+        ========================================
+        PHONG BÌ (ENVELOPE) & PHONG ẤN (SEAL)
+        ========================================
+        */
+.envelope {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: #8B4513;
+    /* Màu nâu đất */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Thêm hiệu ứng chuyển động mượt mà cho phong bì */
+    transition: all 1.5s ease-in-out;
+    transform-style: preserve-3d;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    /* Căn giữa tuyệt đối trong container */
+    transform: translate(-50%, -50%) rotateY(0deg);
+    top: calc(50%-150px);
+    left: calc(50%-150px);
+}
+
+.seal-button {
+    background-color: #e5cc8a;
+    /* Màu vàng đồng (giả lập sáp) */
+    color: #8B4513;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    border: 4px solid #b89c67;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: transform 0.2s;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.seal-button:hover {
+    transform: scale(1.05);
+}
+
+.seal-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/*
+        ========================================
+        THIỆP (CARD)
+        ========================================
+        */
+.absolute-center {
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.sign-front {
+    font-weight: bold;
+}
+
+.flex-1 {
+    display: flex;
+    flex: 1;
+}
+
+.main-block {
+    align-items: center;
+    justify-content: center;
+}
+
+.hello-block {
+    padding-right: 20px;
+}
+
+.card {
+    position: absolute;
+    width: 500px;
+    height: fit-content;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #333;
+    padding: 50px;
+    box-sizing: border-box;
+
+    /* Thẻ thiệp ban đầu nằm phẳng và ẩn bên trong phong bì */
+    opacity: 0;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(-100px);
+
+    /* Căn giữa tuyệt đối trong container */
+    top: 50%;
+    left: 50%;
+
+    /* Thêm hiệu ứng chuyển động mượt mà cho thiệp */
+    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 1s ease-in;
+    z-index: 10;
+}
+
+/*
+        ========================================
+        TRẠNG THÁI MỞ (OPEN STATE)
+        ========================================
+        */
+
+/* Hiệu ứng: Phong bì lùi lại và mờ đi */
+.card-container.open .envelope {
+    transform: translate(-50%, -50%) rotateY(10deg) translateZ(-250px);
+    opacity: 0;
+    pointer-events: none;
+    /* Quan trọng: Vô hiệu hóa nút sau khi mở */
+}
+
+/* Hiệu ứng: Thiệp trồi lên, xoay về vị trí thẳng đứng và phóng to nhẹ */
+.card-container.open .card {
+    opacity: 1;
+    /* trồi lên (translateZ), xoay về (rotateX), và phóng to nhẹ (scale) */
+    transform: translate(-50%, -50%) rotateX(0deg) translateZ(100px) scale(1.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    /* Tạo bóng rõ hơn khi trồi lên */
+}
+
+/* Nội dung thiệp */
+.card h2 {
+    color: #a00000;
+    border-bottom: 2px solid #a00000;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.button-confirm {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Exo 2", sans-serif;
+    font-weight: 300;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: #00c7ec;
+    border: 1px solid #00c7ec;
+    border-radius: 5px;
+    line-height: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.button-confirm:hover {
+    color: white;
+    box-shadow: 0 0 30px 0 rgba(0, 199, 236, 0.5);
+    background-color: #00c7ec;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.button-confirm:hover:before {
+    -webkit-animation: shine 0.5s 0s linear;
+    -moz-animation: shine 0.5s 0s linear;
+    animation: shine 0.5s 0s linear;
+}
+
+.button-confirm:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}
+
+.button-confirm:before {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: white;
+    box-shadow: 0 0 15px 3px white;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@-webkit-keyframes shine {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+@-moz-keyframes shine {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+@keyframes shine {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    /* Ngăn cuộn trang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+    /* Nền đen tuyệt đối để làm nổi bật cửa */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    /* Quan trọng để căn giữa door-container */
+}
+
+/* --- CĂN GIỮA TOÀN BỘ CỬA --- */
+.door-container {
+    position: absolute;
+    /* Căn giữa tuyệt đối trên màn hình */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Dịch chuyển để căn giữa thực sự */
+
+    perspective: 1500px;
+    /* Tạo hiệu ứng 3D */
+    width: 500px;
+    /* Tổng chiều rộng khu vực cửa */
+    height: 700px;
+    /* Tổng chiều cao khu vực cửa */
+    display: flex;
+    /* Dùng flexbox để căn giữa cửa bên trong khung */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* --- KHUNG CỬA ĐÁ (DOOR FRAME) --- */
+.door-frame {
+    position: absolute;
+    width: 700px;
+    /* Rộng hơn cửa chính */
+    height: 900px;
+    /* Cao hơn cửa chính */
+    background:
+        repeating-linear-gradient(-45deg,
+            #3a3a3a 0px, #3a3a3a 10px,
+            #333333 10px, #333333 20px),
+        /* Vân đá đơn giản */
+        linear-gradient(to top, #333, #444);
+    /* Gradient màu nền đá */
+    border-radius: 50% 50% 0 0 / 10% 10% 0 0;
+    /* Bo tròn phần trên như vòm đá */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), 0 20px 50px rgba(0, 0, 0, 0.9);
+    z-index: 1;
+    /* Nằm dưới cánh cửa */
+
+    /* Tạo cảm giác sâu hơn cho vòm cửa */
+    padding-bottom: 50px;
+    /* Tạo không gian giả lập bên dưới */
+    box-sizing: border-box;
+    /* Tính padding vào kích thước */
+    display: none;
+}
+
+/* Tạo thêm hiệu ứng vòm đá bên trong */
+.door-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to bottom, #7a6a5e, #5a4b3f);
+
+}
+
+/* --- CÁNH CỬA CHÍNH (THE DOOR) --- */
+.door {
+    position: relative;
+    width: 500px;
+    /* Chiều rộng cánh cửa gỗ */
+    height: 700px;
+    /* Chiều cao cánh cửa gỗ */
+    /* background: rgb(255,255,255); */
+    /* Màu nền gỗ cơ bản */
+    border-radius: 50% 50% 0 0 / 10% 10% 0 0;
+    /* Bo tròn phần trên giống khung đá */
+    overflow: hidden;
+    /* Quan trọng để các panel không tràn ra ngoài */
+    transform-style: preserve-3d;
+    z-index: 2;
+    /* Nằm trên khung cửa */
+}
+
+/* Các panel cửa (Cửa đôi) */
+.door-left,
+.door-right {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    /* background: linear-gradient(to bottom, #7a6a5e, #5a4b3f); */
+    background: linear-gradient(#8B48D7,#6219BF);
+    /* Màu gỗ sẫm hơn */
+    transition: transform 0.8s ease-out;
+    /* Hiệu ứng mở cửa */
+    transform-origin: center center;
+    /* Tâm quay ban đầu */
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.5),
+        /* Bóng đổ bên trong */
+        0 0 10px rgba(0, 0, 0, 0.3);
+    /* Bóng đổ nhẹ bên ngoài */
+
+    /* Các chi tiết đinh tán và khung sắt */
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: #444;
+        /* Màu kim loại */
+        border-radius: 50%;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+}
+
+.door-left {
+    left: 0;
+    border-right: 3px solid #3d342b;
+    /* Đường kẻ phân cách */
+    /* border-radius: inherit; */
+    /* Kế thừa bo tròn */
+    transform-origin: left center;
+    /* Tâm quay ở mép trái */
+}
+
+.door-right {
+    right: 0;
+    border-left: 3px solid #3d342b;
+    /* Đường kẻ phân cách */
+    /* border-radius: inherit; */
+    /* Kế thừa bo tròn */
+    transform-origin: right center;
+    /* Tâm quay ở mép phải */
+}
+
+/* Hiệu ứng đinh tán trên cửa */
+.door-left::before {
+    top: 10%;
+    left: 15%;
+    width: 12px;
+    height: 12px;
+}
+
+.door-left::after {
+    top: 30%;
+    left: 15%;
+    width: 12px;
+    height: 12px;
+}
+
+/* Thêm các đinh tán khác tùy ý */
+.door-right::before {
+    top: 10%;
+    right: 15%;
+    width: 12px;
+    height: 12px;
+}
+
+.door-right::after {
+    top: 30%;
+    right: 15%;
+    width: 12px;
+    height: 12px;
+}
+
+
+/* --- TAY NẮM CỬA (Nút bấm 3D bóng bẩy - Cập nhật để giống ảnh nhất) --- */
+.hyper-button.door-handle {
+    position: absolute;
+    z-index: 10;
+    width: 90px;
+    /* Kích thước tay nắm */
+    height: 90px;
+    border-radius: 50%;
+    border: none;
+
+    /* Căn giữa nút giữa hai cánh cửa */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    /* Đặt cao hơn một chút */
+    margin-top: -20px;
+
+    /* --- Vỏ Kim Loại (Chrome Rim) --- */
+    background-color: #666;
+    /* Màu nền cho viền */
+    box-shadow:
+        /* Lớp kim loại sáng nhất */
+        0 0 0 5px #e0e0e0,
+        /* Lớp kim loại tối */
+        0 0 0 10px #333,
+        /* Lớp kim loại trung gian */
+        0 0 0 15px #999,
+        /* Bóng đổ tổng thể để nổi lên */
+        0 5px 15px rgba(0, 0, 0, 0.6);
+
+    /* Để nút đỏ nằm trong viền kim loại */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* --- Phần Nút Đỏ Bóng Láng --- */
+    &::before {
+        content: '';
+        width: 70%;
+        /* Kích thước nút đỏ bên trong */
+        height: 70%;
+        border-radius: 50%;
+        background:
+            /* Ánh sáng trắng trên cùng (Highlight) */
+            radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 50%),
+            /* Màu nền đỏ chính với gradient */
+            linear-gradient(to bottom, #ff3333 0%, #cc0000 100%);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        /* Bóng đổ bên trong nút đỏ */
+    }
+
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+/* Hiệu ứng khi nhấn nút */
+.hyper-button.door-handle:active {
+    transform: translateX(-50%) translateY(2px);
+    /* Dịch xuống nhẹ */
+    box-shadow:
+        0 0 0 5px #e0e0e0,
+        0 0 0 10px #333,
+        0 0 0 15px #999,
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    /* Giảm bóng đổ */
+
+    &::before {
+        background:
+            radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 50%),
+            linear-gradient(to bottom, #cc0000 0%, #990000 100%);
+        /* Đỏ đậm hơn */
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
+    }
+}
+
+
+/* --- BIỂN HIỆU (WELCOME SIGN) --- */
+.welcome-sign {
+    position: absolute;
+    top: 10%;
+    /* Vị trí trên cánh cửa */
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 300px;
+    /* Chiều rộng biển hiệu */
+    padding: 15px 20px;
+    background: linear-gradient(to right, #fdd835, #ffeb3b);
+    /* Màu vàng óng */
+    color: #333;
+    border-radius: 8px;
+    font-size: 28px;
+    font-weight: 800;
+    /* Rất đậm */
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.5);
+    /* Bóng đổ và ánh sáng */
+    border: 3px solid #fbc02d;
+    /* Viền vàng sẫm */
+    z-index: 10;
+
+    /* Các chi tiết đinh tán trên biển hiệu */
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #777;
+        /* Màu đinh tán */
+        border-radius: 50%;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.1);
+        top: 8px;
+        /* Vị trí đinh tán */
+    }
+
+    &::before {
+        left: 10px;
+    }
+
+    &::after {
+        right: 10px;
+    }
+}
+
+/* --- ÁNH SÁNG TỪ TRÊN (SPOTLIGHT) --- */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 200, 0.4) 0%, rgba(255, 255, 200, 0) 70%);
+    z-index: 0;
+    /* Nằm dưới mọi thứ */
+}
+
+/* --- HIỆU ỨNG MỞ CỬA --- */
+.door-container.door-open .door-left {
+    transform: rotateY(-60deg);
+    /* Mở cánh trái ra ngoài */
+}
+
+.door-container.door-open .door-right {
+    transform: rotateY(60deg);
+    /* Mở cánh phải ra ngoài */
+}
+
+.door-container.door-open .door-handle {
+    opacity: 0;
+    /* Ẩn nút khi cửa mở */
+    pointer-events: none;
+    /* Không cho click khi ẩn */
+}
+
+/* Optional: Kéo biển hiệu lên cao hơn một chút khi cửa mở */
+.door-container.door-open .welcome-sign {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0.8;
+}
