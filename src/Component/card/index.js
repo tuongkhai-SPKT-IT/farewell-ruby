@@ -30,10 +30,10 @@ export default function Card() {
         if (open) {
             welcomeSign.innerHTML = "RUNNNNNN!!!!!  ";
         } else {
-            welcomeSign.innerHTML = "WELCOME TO <br> GALAXYPAY";
+            welcomeSign.innerHTML = "WELCOME TO <br> GALAXY PAY";
         }
         // document.getElementById("customerInvited").value = "";
-        // Optional: Âm thanh khi mở cửa
+        // Optional: Âm thanh khi mở cửa    
         // const audio = new Audio('door-open.mp3'); // Thêm file âm thanh của bạn
         // audio.play();
     }, [open])
@@ -62,9 +62,14 @@ export default function Card() {
                                         // onClick={() => setOpen(true)}
                                         />
                                     </div>
+
                                 </div>
-                                <p className='text-left'>Chúc bạn luôn có những khoảnh khắc tuyệt vời và tràn đầy niềm vui trong cuộc sống. Cầu mong mọi điều tốt đẹp nhất sẽ đến với bạn!</p>
-                                <p className="sign-front text-center">Trân trọng, <span className="sign-after">Ruby</span></p>
+                                <p className='text-left'>
+                                    ☎️Tui có cái event và cần một người khiến buổi tiệc bớt nhạt. Yes, người đó là bạn. <br />
+                                    🕗️Thời gian: 18:00 ngày 30/11 (chủ nhật) <br />
+                                    👉Đi cho tui vui, còn không đi thì gửi thiệp cho tui nhó.
+                                </p>
+                                <p className="sign-front text-center bold">Trân trọng, <span className="sign-after">Ruby</span></p>
 
                                 <a href="#　" onClick={topupcard} className="button-confirm">Ooh, shiny!</a>
 
@@ -82,7 +87,7 @@ export default function Card() {
                     <button onClick={() => setOpen(!open)} className="hyper-button door-handle"></button>
 
                     <div className="welcome-sign">
-                        WELCOME TO <br /> GALAXYPAY
+                        WELCOME TO <br /> GALAXY PAY
                     </div>
                 </div>
             </div >

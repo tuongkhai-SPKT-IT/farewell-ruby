@@ -27,15 +27,18 @@ function App() {
       </button>
       }
       <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" >
-        <div className="modal-dialog">
+        <div className="modal-dialog marginTopcenter">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">Lời Tâm sự</h1>
+              <h1 className="modal-title fs-5 ceterText" id="exampleModalLabel">Lời Tâm sự</h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              Chào bạn, khi bạn nhìn thấy những lời này là biết rằng mình quý bạn lắm đấy
-              <br /> Best Regards. Ruby
+              Chào bạn, khi bạn nhìn thấy những lời này là biết rằng mình quý bạn lắm đấy <br/> 
+              <br/> 
+              <span className='bold'>
+                Best Regards. Ruby
+              </span>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={play} >Close</button>

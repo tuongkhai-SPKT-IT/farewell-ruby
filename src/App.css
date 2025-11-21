@@ -74,3 +74,12 @@
     opacity: 0
   }
 }
+
+.marginTopcenter{
+  margin-top: 25vh;
+  font-size: 20px;
+}
+
+.ceterText{
+  text-align: center;
+}

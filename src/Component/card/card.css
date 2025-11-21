@@ -121,7 +121,7 @@ body {
 
 .card {
     position: absolute;
-    width: 500px;
+    width: max-content;
     height: fit-content;
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -396,7 +396,7 @@ body {
     height: 100%;
     top: 0;
     /* background: linear-gradient(to bottom, #7a6a5e, #5a4b3f); */
-    background: linear-gradient(#8B48D7,#6219BF);
+    background: linear-gradient(#8B48D7, #6219BF);
     /* Màu gỗ sẫm hơn */
     transition: transform 0.8s ease-out;
     /* Hiệu ứng mở cửa */
@@ -637,4 +637,67 @@ body::before {
 .door-container.door-open .welcome-sign {
     transform: translateX(-50%) translateY(-20px);
     opacity: 0.8;
+}
+
+.input__container {
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.input__container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(25px);
+    border-radius: 20px;
+    background-color: #e499ff;
+    background-image: radial-gradient(at 47% 69%, hsla(17, 62%, 65%, 1) 0px, transparent 50%),
+        radial-gradient(at 9% 32%, hsla(222, 75%, 60%, 1) 0px, transparent 50%);
+}
+
+.input__label {
+    display: block;
+    margin-left: 0.4em;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.input__description {
+    font-size: 0.6em;
+    font-weight: bold;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0.6em;
+    padding-left: 0.9em;
+    border-radius: 20px;
+    background: #fff;
+    transition: background 300ms, color 300ms;
+}
+
+.input:hover,
+.input:focus {
+    background: rgb(0, 0, 0);
+    color: #fff;
+}
+
+.bold {
+    font-weight: bold;
 }
