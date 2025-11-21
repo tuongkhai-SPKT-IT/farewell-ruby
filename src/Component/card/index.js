@@ -1,27 +1,30 @@
 import './card.css';
 import { useEffect, useState } from "react";
 import { postData } from "../API/manageData"
+import AlertWarning from "../Alert"
+import *as constants from '../Constants';
 
 export default function Card() {
     const [open, setOpen] = useState(false)
     const [inviter, setInviter] = useState("")
     const [statusPOST, setStatusPOST] = useState(false)
+    const [alert, setAlert] = useState(false)
+    const [status, setStatus] = useState(constants.failed);
+
+    const childAlert = (value) => {
+        setAlert(value);
+    }
     const topupcard = () => {
-        if (open) {
-            if (inviter.length === 0) {
-                alert("Ghi tên vào nhanh lên")
-                return
-            }
-            document.getElementById("customerInvited").focus();
+        if (inviter.length === 0) {
+            setAlert(true)
+            setStatus(constants.failed)
+            return;
         }
+        document.getElementById("customerInvited").focus();
         if (inviter.length > 0) {
             setStatusPOST(true)
-            postData(inviter, setInviter, setStatusPOST, setOpen)
+            postData(inviter, setInviter, setStatusPOST, setOpen, setAlert, setStatus)
         }
-        // else  document.getElementById("customerInvited").;
-
-
-
     }
     useEffect(() => {
         // const doorHandle = document.querySelector('.hyper-button.door-handle');
@@ -40,9 +43,11 @@ export default function Card() {
 
     return (
         <>
+            {alert && <AlertWarning setAlert={childAlert} status={status} />}
+            {/* {status && <img src={process.env.PUBLIC_URL + '/takePhoto.png'} alt='không có gì'/>} */}
             <div className={`door-container ${open ? "door-open" : ""}`} >
                 <div className={`card-container absolute-center ${open ? "open" : ""}`}>
-                    <div className="card">
+                    <div className={`card ${statusPOST ? "transparent" : ""}`}>
                         {statusPOST ? <div className="pulsing-3"></div> :
                             <>
                                 <h2>🎉 Thư mời ăn mừng! 🎉</h2>
@@ -71,7 +76,7 @@ export default function Card() {
                                 </p>
                                 <p className="sign-front text-center bold">Trân trọng, <span className="sign-after">Ruby</span></p>
 
-                                <a href="#　" onClick={topupcard} className="button-confirm">Ooh, shiny!</a>
+                                <button onClick={topupcard} className="button-confirm">OK, Đồng ý!</button>
 
                             </>
                         }

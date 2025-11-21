@@ -12,7 +12,7 @@ function App() {
   useLayoutEffect(() => {
     document.getElementById("triggerButton")?.click();
     setTrigger(false);
-    getData()
+    // getData()
   }, [])
 
   return (
@@ -26,16 +26,16 @@ function App() {
         Launch demo modal
       </button>
       }
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" >
+      <div onClick={play} className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" >
         <div className="modal-dialog marginTopcenter">
-          <div className="modal-content">
+          <div className="modal-content" onClick={() => { }}>
             <div className="modal-header">
               <h1 className="modal-title fs-5 ceterText" id="exampleModalLabel">Lời Tâm sự</h1>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" onClick={play} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              Chào bạn, khi bạn nhìn thấy những lời này là biết rằng mình quý bạn lắm đấy <br/> 
-              <br/> 
+              Chào bạn, khi bạn nhìn thấy những lời này là biết rằng mình quý bạn lắm đấy <br />
+              <br />
               <span className='bold'>
                 Best Regards. Ruby
               </span>

@@ -21,6 +21,7 @@ body {
     /* position: relative; */
     top: 55%;
     z-index: 10000;
+    cursor: default;
     left: 50%;
 }
 
@@ -91,6 +92,21 @@ body {
     position: absolute;
     /* top: 50%; */
     left: 50%;
+}
+
+@media (max-width: 600px) {
+    .absolute-center {
+        position: absolute;
+        /* top: 50%; */
+        left: 50%;
+        width: auto;
+    }
+
+    .card {
+        width: 100vw !important;
+        text-wrap: initial;
+        font-size: 12px;
+    }
 }
 
 .text-left {
@@ -310,11 +326,10 @@ body {
 .door-container {
     position: absolute;
     /* Căn giữa tuyệt đối trên màn hình */
-    top: 50%;
+    /* top: 50%; */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -100%);
     /* Dịch chuyển để căn giữa thực sự */
-
     perspective: 1500px;
     /* Tạo hiệu ứng 3D */
     width: 500px;
@@ -700,4 +715,9 @@ body::before {
 
 .bold {
     font-weight: bold;
+}
+
+.transparent {
+    /* background: none; */
+    opacity: 0.8 !important;
 }

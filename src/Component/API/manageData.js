@@ -1,3 +1,5 @@
+import * as constant from "../Constants";
+
 export const ID = "ID"
 export const TimeStart = "TimeStart"
 export const AcceptDate = "AcceptDate"
@@ -38,9 +40,11 @@ export const getData = () => {
         const now = new Date();
 
         localStorage.setItem(TimeStart, formatDate(now))
+    }).catch(e => {
+        console.log(e)
     })
 }
-export const postData = (inviter, setInviter, setStatusPOST, setOpen) => {
+export const postData = (inviter, setInviter, setStatusPOST, setOpen, setAlert, setStatus) => {
     const formData = new FormData();
     ///data post
     const now = new Date();
@@ -62,6 +66,8 @@ export const postData = (inviter, setInviter, setStatusPOST, setOpen) => {
             setTimeout(() => {
                 setInviter("")
                 setStatusPOST(false)
+                setAlert(true)
+                setStatus(constant.success)
             }, 2000);
         })
         .catch(error => console.error('Error!', error.message))
