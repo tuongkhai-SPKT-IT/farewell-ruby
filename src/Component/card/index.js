@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { postData } from "../API/manageData"
 import AlertWarning from "../Alert"
 import *as constants from '../Constants';
+import RubyImage from '../RubyImage';
 
 export default function Card() {
     const [open, setOpen] = useState(false)
@@ -10,20 +11,28 @@ export default function Card() {
     const [statusPOST, setStatusPOST] = useState(false)
     const [alert, setAlert] = useState(false)
     const [status, setStatus] = useState(constants.failed);
-
     const childAlert = (value) => {
         setAlert(value);
+    }
+    const openCard = () => {
+        setOpen(!open)
+        // document.getElementById("customerInvited").focus();
+
     }
     const topupcard = () => {
         if (inviter.length === 0) {
             setAlert(true)
             setStatus(constants.failed)
+            setTimeout(() => {
+                document.getElementById("customerInvited").focus();
+            }, 5000);
             return;
         }
-        document.getElementById("customerInvited").focus();
         if (inviter.length > 0) {
             setStatusPOST(true)
+            document.getElementById("customerInvited").blur();
             postData(inviter, setInviter, setStatusPOST, setOpen, setAlert, setStatus)
+            setStatus()
         }
     }
     useEffect(() => {
@@ -43,9 +52,15 @@ export default function Card() {
 
     return (
         <>
-            {alert && <AlertWarning setAlert={childAlert} status={status} />}
+            {alert &&
+                <>
+                    <AlertWarning setAlert={childAlert} status={status} />
+                </>}
             {/* {status && <img src={process.env.PUBLIC_URL + '/takePhoto.png'} alt='không có gì'/>} */}
             <div className={`door-container ${open ? "door-open" : ""}`} >
+                {alert && !open &&
+                    < RubyImage />
+                }
                 <div className={`card-container absolute-center ${open ? "open" : ""}`}>
                     <div className={`card ${statusPOST ? "transparent" : ""}`}>
                         {statusPOST ? <div className="pulsing-3"></div> :
@@ -71,8 +86,11 @@ export default function Card() {
                                 </div>
                                 <p className='text-left'>
                                     ☎️Tui có cái event và cần một người khiến buổi tiệc bớt nhạt. Yes, người đó là bạn. <br />
-                                    🕗️Thời gian: 18:00 ngày 30/11 (chủ nhật) <br />
-                                    👉Đi cho tui vui, còn không đi thì gửi thiệp cho tui nhó.
+                                    🕗️Thời gian: <span className="highlight-text">18:00 ngày 30/11 (chủ nhật)</span>  <br />
+                                    🏠Địa điểm: <span className="highlight-text">彡 𝐋𝐞 𝐒𝐭𝐞𝐚𝐤 彡
+                                        <br />    (221 Nguyễn Công Trứ, F.Nguyễn Thái Bình, Q1, TPHCM)</span>
+                                    <br />
+                                    👉Đi cho tui vui, còn không đi thì x2 ở đám cưới tui nhó.
                                 </p>
                                 <p className="sign-front text-center bold">Trân trọng, <span className="sign-after">Ruby</span></p>
 
@@ -84,12 +102,12 @@ export default function Card() {
 
                     </div>
                 </div >
-                <div onClick={() => setOpen(!open)} className="door-frame"></div>
+                <div onClick={openCard} className="door-frame"></div>
                 <div className="door">
-                    <div onClick={() => setOpen(!open)} className="door-left"></div>
-                    <div onClick={() => setOpen(!open)} className="door-right"></div>
+                    <div onClick={openCard} className="door-left"></div>
+                    <div onClick={openCard} className="door-right"></div>
 
-                    <button onClick={() => setOpen(!open)} className="hyper-button door-handle"></button>
+                    <button onClick={openCard} className="hyper-button door-handle"></button>
 
                     <div className="welcome-sign">
                         WELCOME TO <br /> GALAXY PAY

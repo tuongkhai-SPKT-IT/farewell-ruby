@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './Alert.css'
 import * as constant from "../Constants"
 
-
+/* eslint-disable */
 export default function Alert({ setAlert, status }) {
     let autoHideTimeout;
     const [alertBoxClassName, setAlertBoxClassName] = useState(["alert-box", status])
@@ -40,7 +40,7 @@ export default function Alert({ setAlert, status }) {
                     <span className="icon"> {status === constant.success ? "✔️" : "❌"}</span>
                     <p className="message">
                         {status === constant.success ?
-                            "OK! Tui đã chụp hình bạn rồi. Hẹn bạn CN 30/11 nhó!!!"
+                            "OK! Tui tặng bạn 1 bó hoa nè. Hẹn bạn 30/11 nhó!!!"
                             : "**Bạn ơi! ** Vui lòng nhập tên của bạn vô bạn ơi! **."}
                     </p>
                     <button className="close-btn" onClick={hideAlert}>×</button>

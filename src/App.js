@@ -3,16 +3,36 @@ import './App.css';
 import Background from './Component/background';
 import Card from './Component/card';
 import apt from './APT.mp3';
-import { getData } from './Component/API/manageData';
+import { getData, modelMobile } from './Component/API/manageData';
 import { useLayoutEffect, useState } from 'react';
+import { isMobile, mobileModel, deviceDetect } from 'react-device-detect'
+
 
 function App() {
-  let [play] = useSound(apt)
+  let [onplay] = useSound(apt)
+  const play = () => {
+    onplay();
+  }
   const [trigger, setTrigger] = useState(true)
+  const modalBackdrop = document.querySelector(".modal-backdrop")
+  if (modalBackdrop) {
+    modalBackdrop.classList.add("addtion-Class")
+    modalBackdrop.addEventListener("click", () => {
+      play();
+    })
+  }
+
+
   useLayoutEffect(() => {
     document.getElementById("triggerButton")?.click();
     setTrigger(false);
-    // getData()
+    localStorage.clear();
+    getData()
+    console.log(deviceDetect())
+    console.log(mobileModel)
+    if (isMobile)
+      localStorage.setItem(modelMobile, mobileModel)
+    else localStorage.setItem(modelMobile, deviceDetect().toString())
   }, [])
 
   return (

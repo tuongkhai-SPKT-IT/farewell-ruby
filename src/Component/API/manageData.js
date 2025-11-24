@@ -5,6 +5,7 @@ export const TimeStart = "TimeStart"
 export const AcceptDate = "AcceptDate"
 export const Name = "Họ và tên"
 export const TimeEnd = "TimeEnd"
+export const modelMobile = "mobileModel"
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyZ-OltR-cC213b2XhUQNSWlf4Fk-MFX4CXkOOM7c6YuaXu54GIPqql1Ae8EnxSSkd_NA/exec'
 
 function formatDate(date) {
@@ -52,23 +53,24 @@ export const postData = (inviter, setInviter, setStatusPOST, setOpen, setAlert, 
     formData.append(TimeStart, localStorage.getItem(TimeStart))
     formData.append(AcceptDate, formatDay(now))
     formData.append(Name, inviter)
+    formData.append(modelMobile, localStorage.getItem(modelMobile))
 
     if (!ID || !TimeStart || !AcceptDate || !Name) return;
 
 
     formData.append(TimeEnd, formatDate(now))
-    //post data
+    // post data
     fetch(scriptURL, { method: 'POST', body: formData })
         .then(response => {
             console.log("đã ghi");
             console.log(response);
-            setOpen(false)
+            setInviter("")
             setTimeout(() => {
-                setInviter("")
-                setStatusPOST(false)
                 setAlert(true)
-                setStatus(constant.success)
+                setOpen(false)
+                setStatusPOST(false)
             }, 2000);
+            setStatus(constant.success)
         })
         .catch(error => console.error('Error!', error.message))
 }

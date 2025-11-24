@@ -12,7 +12,7 @@
   <title>Fare Well Ruby</title>
 </head>
 
-<body>
+<body class='scale-down'>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js"
     crossorigin="anonymous"></script>
@@ -22,6 +22,16 @@
   <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js"
     crossorigin="anonymous"></script>
   <div id="root"></div>
+  <style>
+    @media (max-width: 600px) {
+      .scale-down {
+        transform: scale(0.8);
+        /* transform-origin: top left; */
+        width: 100vw;
+        min-height: 100vh;
+      }
+    }
+  </style>
 </body>
 
 </html>

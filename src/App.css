@@ -83,3 +83,12 @@
 .ceterText {
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .addtion-class {
+    left: -15vw;
+    width: 130vw;
+    height: 130vh !important;
+    top: -15vh;
+  }
+}

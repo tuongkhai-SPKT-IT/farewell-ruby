@@ -134,13 +134,13 @@ i:nth-of-type(7n + 1) {
     left: 95%;
 }
 
-.root {
+.background-root {
     height: 100vh;
     background-color: skyblue;
     border: 1px solid darkgrey;
     position: relative;
     overflow: hidden;
-    width: 100vw;
+    width: 125vw;
 }
 
 /* .ground, */
@@ -153,6 +153,7 @@ i:nth-of-type(7n + 1) {
 }
 
 .cloud {
+    border: none;
     width: 100%;
     height: 150px;
     background: white;
