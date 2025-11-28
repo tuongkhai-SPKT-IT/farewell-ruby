@@ -1,11 +1,11 @@
-import * as constant from "../Constants";
+import { ID, TimeStart, TimeEnd, AcceptDate, Name, modelMobile, PositionT5, success, positionField } from "../Constants";
+// export const ID = "ID"
+// export const TimeStart = "TimeStart"
+// export const AcceptDate = "AcceptDate"
+// export const Name = "Họ và tên"
+// export const TimeEnd = "TimeEnd"
+// export const modelMobile = "mobileModel"
 
-export const ID = "ID"
-export const TimeStart = "TimeStart"
-export const AcceptDate = "AcceptDate"
-export const Name = "Họ và tên"
-export const TimeEnd = "TimeEnd"
-export const modelMobile = "mobileModel"
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyZ-OltR-cC213b2XhUQNSWlf4Fk-MFX4CXkOOM7c6YuaXu54GIPqql1Ae8EnxSSkd_NA/exec'
 
 function formatDate(date) {
@@ -54,6 +54,7 @@ export const postData = (inviter, setInviter, setStatusPOST, setOpen, setAlert, 
     formData.append(AcceptDate, formatDay(now))
     formData.append(Name, inviter)
     formData.append(modelMobile, localStorage.getItem(modelMobile))
+    formData.append(positionField, PositionT5)
 
     if (!ID || !TimeStart || !AcceptDate || !Name) return;
 
@@ -70,7 +71,7 @@ export const postData = (inviter, setInviter, setStatusPOST, setOpen, setAlert, 
                 setOpen(false)
                 setStatusPOST(false)
             }, 2000);
-            setStatus(constant.success)
+            setStatus(success)
         })
         .catch(error => console.error('Error!', error.message))
 }

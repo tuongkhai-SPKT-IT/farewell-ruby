@@ -40,8 +40,9 @@ export default function Alert({ setAlert, status }) {
                     <span className="icon"> {status === constant.success ? "✔️" : "❌"}</span>
                     <p className="message">
                         {status === constant.success ?
-                            "OK! Tui tặng bạn 1 bó hoa nè. Hẹn bạn 30/11 nhó!!!"
-                            : "**Bạn ơi! ** Vui lòng nhập tên của bạn vô bạn ơi! **."}
+                            <span>
+                                OK! Tui tặng bạn 1 bó hoa nè. < br /> Hẹn bạn tối nay nhó!!!</span>
+                            : <span>**Bạn ơi! **  < br /> Vui lòng nhập tên của bạn vô bạn ơi! **.</span>}
                     </p>
                     <button className="close-btn" onClick={hideAlert}>×</button>
                 </div>

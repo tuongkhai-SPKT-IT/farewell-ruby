@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { postData } from "../API/manageData"
 import AlertWarning from "../Alert"
 import *as constants from '../Constants';
+
 import RubyImage from '../RubyImage';
 
 export default function Card() {
@@ -33,6 +34,7 @@ export default function Card() {
             document.getElementById("customerInvited").blur();
             postData(inviter, setInviter, setStatusPOST, setOpen, setAlert, setStatus)
             setStatus()
+            // window.location.reload();
         }
     }
     useEffect(() => {
@@ -86,9 +88,9 @@ export default function Card() {
                                 </div>
                                 <p className='text-left'>
                                     ☎️Tui có cái event và cần một người khiến buổi tiệc bớt nhạt. Yes, người đó là bạn. <br />
-                                    🕗️Thời gian: <span className="highlight-text">18:00 ngày 30/11 (chủ nhật)</span>  <br />
-                                    🏠Địa điểm: <span className="highlight-text">彡 𝐋𝐞 𝐒𝐭𝐞𝐚𝐤 彡
-                                        <br />    (221 Nguyễn Công Trứ, F.Nguyễn Thái Bình, Q1, TPHCM)</span>
+                                    🕗️Thời gian: <span className="highlight-text">18:00 ngày 27/11 (Thứ 5)</span>  <br />
+                                    🏠Địa điểm: <span className="highlight-text position-text">Mộc Riêu Nướng <br />
+                                        (9A, Lam Sơn, Phường 2, Quận Tân Bình, TPHCM)</span>
                                     <br />
                                     👉Đi cho tui vui, còn không đi thì x2 ở đám cưới tui nhó.
                                 </p>

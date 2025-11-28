@@ -3,7 +3,8 @@ import './App.css';
 import Background from './Component/background';
 import Card from './Component/card';
 import apt from './APT.mp3';
-import { getData, modelMobile } from './Component/API/manageData';
+import { getData } from './Component/API/manageData';
+import { modelMobile } from './Component/Constants';
 import { useLayoutEffect, useState } from 'react';
 import { isMobile, mobileModel, deviceDetect } from 'react-device-detect'
 

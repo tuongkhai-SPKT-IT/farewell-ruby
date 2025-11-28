@@ -1,2 +1,11 @@
 export const success = "success"
 export const failed = "error"
+export const PositionT5 = "Mộc Riêu Nướng (9A, Lam Sơn, Phường 2, Quận Tân Bình, TPHCM)";
+export const PositionCN = "彡 𝐋𝐞 𝐒𝐭𝐞𝐚𝐤 彡  (221 Nguyễn Công Trứ, F.Nguyễn Thái Bình, Q1, TPHCM) "
+export const ID = "ID"
+export const TimeStart = "TimeStart"
+export const AcceptDate = "AcceptDate"
+export const Name = "Họ và tên"
+export const TimeEnd = "TimeEnd"
+export const modelMobile = "mobileModel"
+export const positionField = "positionField"
