@@ -6,7 +6,9 @@ import apt from './APT.mp3';
 import { getData } from './Component/API/manageData';
 import { modelMobile } from './Component/Constants';
 import { useLayoutEffect, useState } from 'react';
-import { isMobile, mobileModel, deviceDetect } from 'react-device-detect'
+import { isMobile, mobileModel, deviceDetect } from 'react-device-detect' // eslint-disable-next-line
+import MerryChristMas1 from './Component/MerryChristMas/MerryChristMas1';
+import MerryChristMas2 from './Component/MerryChristMas/MerryChristmas2';
 
 
 function App() {
@@ -29,13 +31,15 @@ function App() {
     setTrigger(false);
     localStorage.clear();
     getData()
-    console.log(deviceDetect())
-    console.log(mobileModel)
+    // console.log(deviceDetect())
+    // console.log(mobileModel)
     if (isMobile)
       localStorage.setItem(modelMobile, mobileModel)
     else localStorage.setItem(modelMobile, deviceDetect().toString())
   }, [])
-
+  return <MerryChristMas1 />
+  return <MerryChristMas2 />
+  // eslint-disable-next-line
   return (
     <>
       <div style={{ overflow: "hidden", }}>
