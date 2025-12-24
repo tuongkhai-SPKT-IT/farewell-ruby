@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/farewell-ruby/static/css/main.83bbc848.css",
-    "main.js": "/farewell-ruby/static/js/main.dde6487c.js",
+    "main.js": "/farewell-ruby/static/js/main.2bd21570.js",
     "static/js/885.e2af2c22.chunk.js": "/farewell-ruby/static/js/885.e2af2c22.chunk.js",
     "static/js/453.0ffb4f7b.chunk.js": "/farewell-ruby/static/js/453.0ffb4f7b.chunk.js",
     "static/media/APT.mp3": "/farewell-ruby/static/media/APT.6c0839b012ca85fe1ff4.mp3",
     "index.html": "/farewell-ruby/index.html",
     "main.83bbc848.css.map": "/farewell-ruby/static/css/main.83bbc848.css.map",
-    "main.dde6487c.js.map": "/farewell-ruby/static/js/main.dde6487c.js.map",
+    "main.2bd21570.js.map": "/farewell-ruby/static/js/main.2bd21570.js.map",
     "885.e2af2c22.chunk.js.map": "/farewell-ruby/static/js/885.e2af2c22.chunk.js.map",
     "453.0ffb4f7b.chunk.js.map": "/farewell-ruby/static/js/453.0ffb4f7b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.83bbc848.css",
-    "static/js/main.dde6487c.js"
+    "static/js/main.2bd21570.js"
   ]
 }
