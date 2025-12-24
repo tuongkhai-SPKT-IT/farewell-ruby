@@ -4,18 +4,19 @@ import { useEffect } from 'react'
 export default function MerryChristMas1() {
     useEffect(() => {
         startSystem()
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [])
 
     // ==========================================
     // 1. Vandiep
     // ==========================================
-    const MUSIC_URL = "audio.mp3";
+    const MUSIC_URL = "https://music.youtube.com/watch?v=fRyhqobl0sk&si=gD_PCS4rIB_rzVEn";
     let bgMusic = new Audio(MUSIC_URL);
     bgMusic.loop = true; bgMusic.volume = 1.0;
 
     const loader = new window.THREE.TextureLoader();
-    const photoFiles = ['image1.jpeg', 'image2.jpeg', 'image3.jpeg', 'image4.jpeg', 'image5.jpeg'];
+    const photoFiles = ['z7249493993324_0a20ca88bc201f70a15abb66895b2252.jpg', 'z7361895597389_500c1c072be43c8c63f2d11e6398b010.jpg',
+        'z7361895602044_5a94507ee41f814d2808e58380fa03c8.jpg'];
     const photoTextures = [];
     photoFiles.forEach((f, i) => photoTextures[i] = loader.load(f));
 
@@ -27,7 +28,7 @@ export default function MerryChristMas1() {
         const cx = 64, cy = 64;
 
         if (type === 'gold_glow') {
-            // Vandiep
+
             const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 40);
             grd.addColorStop(0, '#FFFFFF');
             grd.addColorStop(0.2, '#FFFFE0');
@@ -36,7 +37,7 @@ export default function MerryChristMas1() {
             ctx.fillStyle = grd; ctx.fillRect(0, 0, 128, 128);
 
         } else if (type === 'red_light') {
-            // Vandiep
+
             const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 50);
             grd.addColorStop(0, '#FFAAAA');
             grd.addColorStop(0.3, '#FF0000');
@@ -44,13 +45,13 @@ export default function MerryChristMas1() {
             ctx.fillStyle = grd; ctx.fillRect(0, 0, 128, 128);
 
         } else if (type === 'gift_red') {
-            // Vandiep
-            ctx.fillStyle = '#D32F2F'; // Vandiep
+
+            ctx.fillStyle = '#D32F2F';
             ctx.fillRect(20, 20, 88, 88);
-            ctx.fillStyle = '#FFD700'; // Vandiep
-            ctx.fillRect(54, 20, 20, 88); // Vandiep
-            ctx.fillRect(20, 54, 88, 20); // Vandiep
-            // Vandiep
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(54, 20, 20, 88);
+            ctx.fillRect(20, 54, 88, 20);
+
             ctx.strokeStyle = "rgba(0,0,0,0.3)"; ctx.lineWidth = 2; ctx.strokeRect(20, 20, 88, 88);
         }
         return new window.THREE.CanvasTexture(canvas);
@@ -76,7 +77,7 @@ export default function MerryChristMas1() {
     };
 
     let scene, camera, renderer;
-    let groupGold, groupRed, groupGift; // Vandiep
+    let groupGold, groupRed, groupGift;
     let photoMeshes = [];
     let titleMesh, starMesh;
 
@@ -100,10 +101,10 @@ export default function MerryChristMas1() {
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Vandiep
+
         groupGold = createParticleSystem('gold', CONFIG.goldCount, 2.0);
-        groupRed = createParticleSystem('red', CONFIG.redCount, 3.5); // Vandiep
-        groupGift = createParticleSystem('gift', CONFIG.giftCount, 3.0); // Vandiep
+        groupRed = createParticleSystem('red', CONFIG.redCount, 3.5);
+        groupGift = createParticleSystem('gift', CONFIG.giftCount, 3.0);
 
         createPhotos();
         createDecorations();
@@ -120,7 +121,7 @@ export default function MerryChristMas1() {
             const h = Math.random() * CONFIG.treeHeight;
             const y = h - CONFIG.treeHeight / 2;
 
-            // Vandiep
+
             let radiusRatio = (type === 'gold') ? Math.sqrt(Math.random()) : 0.9 + Math.random() * 0.1;
 
             const maxR = (1 - (h / CONFIG.treeHeight)) * CONFIG.treeBaseRadius;
@@ -137,7 +138,7 @@ export default function MerryChristMas1() {
             const phi = Math.acos(2 * v - 1);
             const lam = 2 * Math.PI * u;
 
-            // Vandiep
+
             let radMult = (type === 'gift') ? 1.2 : 1.0;
             const rad = CONFIG.explodeRadius * Math.cbrt(Math.random()) * radMult;
 
@@ -146,7 +147,7 @@ export default function MerryChristMas1() {
             const ez = rad * Math.cos(phi);
             pExplodeTargets.push(ex, ey, ez);
 
-            // Vandiep
+
             pPositions.push(tx, y, tz);
         }
 
@@ -158,7 +159,7 @@ export default function MerryChristMas1() {
             size: size,
             map: textures[type],
             transparent: true, opacity: 1.0,
-            // Vandiep
+
             blending: (type === 'gift') ? window.THREE.NormalBlending : window.THREE.AdditiveBlending,
             depthWrite: false,
             sizeAttenuation: true
@@ -174,7 +175,7 @@ export default function MerryChristMas1() {
         const borderGeo = new window.THREE.PlaneGeometry(9, 9);
         const borderMat = new window.THREE.MeshBasicMaterial({ color: 0xFFD700 });
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             const mat = new window.THREE.MeshBasicMaterial({
                 map: photoTextures[i], side: window.THREE.DoubleSide
             });
@@ -191,7 +192,7 @@ export default function MerryChristMas1() {
     }
 
     function createDecorations() {
-        // Vandiep
+
         const canvas = document.createElement('canvas');
         canvas.width = 1024; canvas.height = 256;
         const ctx = canvas.getContext('2d');
@@ -206,7 +207,7 @@ export default function MerryChristMas1() {
         titleMesh.position.set(0, 50, 0);
         scene.add(titleMesh);
 
-        // Vandiep
+
         const starCanvas = document.createElement('canvas');
         starCanvas.width = 128; starCanvas.height = 128;
         const sCtx = starCanvas.getContext('2d');
@@ -235,13 +236,13 @@ export default function MerryChristMas1() {
         }
         group.geometry.attributes.position.needsUpdate = true;
 
-        // Vandiep
+
         if (targetState === 'TREE') {
             group.rotation.y += 0.003;
-            // Vandiep
+
             if (isBlinking) {
-                // Vandiep
-                // Vandiep
+
+
                 const scale = 1 + Math.sin(time * 5) * 0.2;
                 group.scale.set(scale, scale, scale);
             } else {
@@ -259,12 +260,12 @@ export default function MerryChristMas1() {
         const speed = 0.06;
         const handRotY = (handX - 0.5) * 2.5;
 
-        // Vandiep
+
         updateParticleGroup(groupGold, state, speed, handRotY, time, false);
-        updateParticleGroup(groupRed, state, speed, handRotY, time, true); // Vandiep
+        updateParticleGroup(groupRed, state, speed, handRotY, time, true);
         updateParticleGroup(groupGift, state, speed, handRotY, time, false);
 
-        // Vandiep
+
         photoMeshes.forEach((mesh, i) => {
             if (!mesh.material.map && photoTextures[i]) {
                 mesh.material.map = photoTextures[i]; mesh.material.needsUpdate = true;
@@ -340,8 +341,8 @@ export default function MerryChristMas1() {
 
         hands.onResults(results => {
             ctx.clearRect(0, 0, 100, 75); ctx.drawImage(results.image, 0, 0, 100, 75);
-
-            if (results.multiHandLandmarks.length > 0) {
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+                // if (results.multiHandLandmarks.length > 0) {
                 const lm = results.multiHandLandmarks[0];
                 handX = lm[9].x;
 
@@ -378,7 +379,11 @@ export default function MerryChristMas1() {
     }
 
     window.addEventListener('resize', () => {
-        if (camera) { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
+        if (camera) {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
     });
     // eslint-disable-next-line
     function logError(e) { document.getElementById('error-log').style.display = 'block'; document.getElementById('error-log').innerText += e + "\n"; }

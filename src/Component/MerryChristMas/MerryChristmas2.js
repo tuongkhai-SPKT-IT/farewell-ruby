@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import  './MerryChristMas2.css';
+import './MerryChristMas2.css';
 export default function MerryChristmas2() {
     useEffect(() => {
-      startSystem() // eslint-disable-next-line
+        startSystem() // eslint-disable-next-line
     }, [])
-    
+
     // ==========================================
     // 1. RESOURCES CONFIG Vandiep
     // ==========================================
@@ -298,7 +298,7 @@ export default function MerryChristmas2() {
             const beatScale = 1 + Math.abs(Math.sin(time * 3)) * 0.15;
             group.scale.set(beatScale, beatScale, beatScale);
 
-            // Vandiep
+
             for (let i = 0; i < count; i++) {
                 colors[i * 3] = baseColor.r; colors[i * 3 + 1] = baseColor.g; colors[i * 3 + 2] = baseColor.b;
                 if (i % 3 === 0) sizes[i] = baseSize;

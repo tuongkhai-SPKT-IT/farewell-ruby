@@ -38,6 +38,7 @@ function App() {
     else localStorage.setItem(modelMobile, deviceDetect().toString())
   }, [])
   return <MerryChristMas1 />
+  // eslint-disable-next-line
   return <MerryChristMas2 />
   // eslint-disable-next-line
   return (
